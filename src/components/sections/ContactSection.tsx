@@ -1,53 +1,19 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import { SectionTitle } from '@/src/components/ui/SectionTitle';
 import { Button } from '@/src/components/ui/Button';
-import type { ContactFormData } from '@/src/types';
-
-type FormFields = ContactFormData;
+import { useContactForm } from '@/src/hooks/useContactForm';
 
 export function ContactSection() {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<FormFields>({
-    defaultValues: { name: '', email: '', subject: '', message: '', honeypot: '' },
-  });
-
-  async function onSubmit(data: FormFields) {
-    // Honeypot check on client side as well
-    if (data.honeypot) return;
-
-    setStatus('loading');
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          subject: data.subject,
-          message: data.message,
-          website: data.honeypot ?? '',
-        }),
-      });
-
-      if (res.ok) {
-        setStatus('success');
-        reset();
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
-  }
+    formState: { errors, isSubmitting },
+    onSubmit,
+    isSuccess,
+    isError,
+    errorMessage,
+  } = useContactForm();
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
@@ -57,7 +23,7 @@ export function ContactSection() {
         align="center"
       />
 
-      {status === 'success' && (
+      {isSuccess && (
         <div
           role="alert"
           className="mb-6 rounded-lg bg-surface border border-accent/40 px-4 py-3 text-sm text-accent text-center"
@@ -66,12 +32,12 @@ export function ContactSection() {
         </div>
       )}
 
-      {status === 'error' && (
+      {isError && (
         <div
           role="alert"
           className="mb-6 rounded-lg bg-surface border border-red-500/40 px-4 py-3 text-sm text-red-400 text-center"
         >
-          Something went wrong. Please try again.
+          {errorMessage}
         </div>
       )}
 
@@ -180,10 +146,10 @@ export function ContactSection() {
           variant="primary"
           size="lg"
           type="submit"
-          disabled={status === 'loading'}
+          disabled={isSubmitting}
           className="w-full justify-center"
         >
-          {status === 'loading' ? 'Sending…' : 'Send Message'}
+          {isSubmitting ? 'Sending…' : 'Send Message'}
         </Button>
       </form>
     </div>

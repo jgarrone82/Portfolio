@@ -7,6 +7,7 @@ import { Button } from '@/src/components/ui/Button';
 import type { NavLink } from '@/src/types/index';
 
 const NAV_LINKS: NavLink[] = [
+  { label: 'Home', href: '#home' },
   { label: 'Projects', href: '#projects' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
@@ -61,7 +62,15 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-2">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 text-sm font-medium rounded-md transition-colors text-text-secondary hover:text-text-primary"
+            >
+              Resume
+            </a>
             <Button variant="primary" size="sm" href="#contact">
               Get in Touch
             </Button>
@@ -97,6 +106,15 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+                className="px-3 py-2 text-sm font-medium rounded-md transition-colors text-text-secondary hover:text-text-primary hover:bg-surface"
+              >
+                Resume
+              </a>
               <div className="pt-2 px-3">
                 <Button
                   variant="primary"

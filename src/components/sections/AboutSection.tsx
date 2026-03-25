@@ -1,6 +1,25 @@
 import Image from 'next/image';
+import { Music2, BookOpen, Globe } from 'lucide-react';
 import { Button } from '@/src/components/ui/Button';
 import { timelineEntries } from '@/src/data/timeline';
+
+const INTERESTS = [
+  {
+    Icon: Music2,
+    title: 'Music',
+    description: 'Music lover and occasional listener — a playlist for every coding session.',
+  },
+  {
+    Icon: BookOpen,
+    title: 'Continuous Learning',
+    description: 'Always diving into new books and courses on technology, architecture, and leadership.',
+  },
+  {
+    Icon: Globe,
+    title: 'Traveling',
+    description: 'Exploring new cultures and places. Living in Barcelona has only made this passion grow.',
+  },
+];
 
 const BIO =
   'Highly accomplished Senior Software Developer and Leader with over 15 years of extensive experience across the full software development lifecycle. Proven expertise in designing, building, and deploying robust desktop, web, and RESTful applications using technologies such as .NET, Java, and modern front-end frameworks. Experienced in leading and mentoring high-performing development teams, optimizing processes, and driving projects using Agile methodologies like SCRUM. Adept at leveraging cloud platforms and various database systems. Possessing a strong blend of technical depth, strategic thinking, and effective communication to deliver innovative and efficient software solutions.';
@@ -65,6 +84,25 @@ export function AboutSection() {
               </li>
             ))}
           </ol>
+        </div>
+      </div>
+
+      {/* Beyond the Code */}
+      <div className="mb-16">
+        <h3 className="text-xl font-semibold text-text-primary mb-8 text-center">
+          Beyond the Code
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {INTERESTS.map(({ Icon, title, description }) => (
+            <div
+              key={title}
+              className="bg-surface border border-border rounded-xl p-6"
+            >
+              <Icon className="text-accent mb-4" size={28} aria-hidden="true" />
+              <h4 className="text-sm font-semibold text-text-primary mb-2">{title}</h4>
+              <p className="text-sm text-text-secondary leading-relaxed">{description}</p>
+            </div>
+          ))}
         </div>
       </div>
 

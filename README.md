@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jorge Ariel Garrone — Portfolio
+
+Personal portfolio website built with Next.js 14+, TypeScript, and Tailwind CSS.
+
+**Live site:** [jorgegarrone.com](https://www.jorgegarrone.com)
+
+## Tech Stack
+
+- **Framework:** Next.js 14+ (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Animations:** Framer Motion
+- **Email:** Resend
+- **Testing:** Vitest + React Testing Library
+- **Deploy:** Vercel
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Copy env file and fill in your values
+cp .env.example .env.local
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|----------|-------------|
+| `RESEND_API_KEY` | API key from [resend.com](https://resend.com) |
+| `CONTACT_TO_EMAIL` | Email address to receive contact form submissions |
+| `NEXT_PUBLIC_SITE_URL` | Public URL of the site |
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev            # Start development server
+npm run test           # Run tests (watch mode)
+npm run test:ui        # Run tests with Vitest UI
+npm run test:coverage  # Run tests with coverage report
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Before Going Live
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [ ] Add `RESEND_API_KEY` to `.env.local` and Vercel dashboard
+- [ ] Replace `public/images/projects/*.png` with real project screenshots
+- [ ] Create `public/og-image.png` (1200×630 px) for social sharing
+- [ ] Verify sender domain in Resend dashboard
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/                  # Next.js App Router
+├── api/contact/      # Contact form serverless handler
+├── layout.tsx        # Root layout with metadata
+├── page.tsx          # Single-page composition
+├── sitemap.ts        # Auto-generated sitemap
+└── robots.ts         # Robots.txt
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+src/
+├── components/
+│   ├── layout/       # Navbar, Footer
+│   ├── sections/     # Hero, About, Skills, Projects, Contact
+│   └── ui/           # Badge, Button, SectionTitle, AnimatedSection, JsonLd
+├── data/             # Static content (skills, projects, timeline, services)
+├── hooks/            # useActiveSection, useContactForm
+├── lib/              # Resend client, Zod validations
+├── test/             # All test files
+└── types/            # Shared TypeScript interfaces
+
+public/
+├── images/           # Profile photo + project screenshots
+└── resume.pdf        # Downloadable CV
+```
