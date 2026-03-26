@@ -30,7 +30,7 @@ export function HeroSection() {
             {/* CTA buttons */}
             <div className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start">
               <Button variant="primary" size="lg" href="#projects">
-                See My Projects
+                View My Work
               </Button>
               <Button variant="outline" size="lg" href="#contact">
                 Get in Touch
