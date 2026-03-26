@@ -152,6 +152,12 @@ export function ContactSection() {
           {isSubmitting ? 'Sending…' : 'Send Message'}
         </Button>
       </form>
+
+      <div className="mt-8 text-center">
+        <Button variant="outline" size="md" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+          Download CV
+        </Button>
+      </div>
     </div>
   );
 }
