@@ -4,6 +4,7 @@ import { Navbar } from "@/src/components/layout/Navbar";
 import { Footer } from "@/src/components/layout/Footer";
 import { JsonLd } from "@/src/components/ui/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jorgegarrone.com"),
@@ -72,6 +73,7 @@ export default function RootLayout({
         <main className="flex-1 pt-16">{children}</main>
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
