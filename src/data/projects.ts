@@ -13,6 +13,17 @@ export const projects: Project[] = [
     imageUrl: '/images/projects/react-travel.png',
   },
   {
+    id: 'myreelmind',
+    title: 'MyReelMind',
+    description:
+      'A retro, VHS-styled personal library to track the movies, TV shows and anime you watch. Search titles via the TMDB API and build your shelf with watch status, ratings and notes — backed by Supabase and Drizzle ORM.',
+    techStack: ['Next.js 15', 'React 19', 'Supabase', 'Drizzle ORM', 'TMDB API'],
+    githubUrl: 'https://github.com/jgarrone82/MyReelMind',
+    liveUrl: 'https://my-reel-mind.vercel.app',
+    status: 'live',
+    imageUrl: '/images/projects/myreelmind.png',
+  },
+  {
     id: 'tienda-online',
     title: 'Online Store',
     description:
@@ -49,13 +60,4 @@ export const projects: Project[] = [
     techStack: [],
     githubUrl: '',
     status: 'coming-soon',
-  },
-  {
-    id: 'coming-soon-3',
-    title: 'Coming Soon',
-    description: 'A new project is in the works. Stay tuned for updates.',
-    techStack: [],
-    githubUrl: '',
-    status: 'coming-soon',
-  },
-];
+  },];

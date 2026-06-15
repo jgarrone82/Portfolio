@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import { Lock, Github } from 'lucide-react';
+import { Lock, Github, ExternalLink } from 'lucide-react';
 import { Badge } from '@/src/components/ui/Badge';
 import { Button } from '@/src/components/ui/Button';
 import { SectionTitle } from '@/src/components/ui/SectionTitle';
 import { projects } from '@/src/data/projects';
 import type { Project } from '@/src/types';
 
-function LiveProjectCard({ project }: { project: Project }) {
+export function LiveProjectCard({ project }: { project: Project }) {
   return (
     <div className="bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/50 transition-colors flex flex-col">
       {/* Project image */}
@@ -42,19 +42,34 @@ function LiveProjectCard({ project }: { project: Project }) {
           </div>
         )}
 
-        {/* GitHub button */}
-        {project.githubUrl && (
-          <Button
-            variant="ghost"
-            size="sm"
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="self-start"
-          >
-            <Github className="size-4" />
-            View on GitHub
-          </Button>
+        {/* Action buttons */}
+        {(project.liveUrl || project.githubUrl) && (
+          <div className="flex flex-wrap gap-2">
+            {project.liveUrl && (
+              <Button
+                variant="primary"
+                size="sm"
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="size-4" />
+                Live Demo
+              </Button>
+            )}
+            {project.githubUrl && (
+              <Button
+                variant="ghost"
+                size="sm"
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="size-4" />
+                View on GitHub
+              </Button>
+            )}
+          </div>
         )}
       </div>
     </div>
