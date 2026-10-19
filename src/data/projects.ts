@@ -2,15 +2,15 @@ import type { Project } from '@/src/types';
 
 export const projects: Project[] = [
   {
-    id: 'react-travel',
-    title: 'React Travel App',
+    id: 'homeloop',
+    title: 'Homeloop',
     description:
-      'A travel discovery app built with React.js that integrates Google Places API to explore destinations, view place details, and find nearby attractions.',
-    techStack: ['React.js', 'Google Places API', 'JavaScript', 'CSS'],
-    githubUrl: 'https://github.com/jgarrone82/React-Project-Travel',
-    liveUrl: undefined,
+      "A chore planner for couples: add the household's tasks, set a free-time block, and an AI builds both partners' day around it. Assign tasks, do them together, replan when life changes — same list on both phones.",
+    techStack: ['React Native', 'Expo', 'TypeScript', '.NET 10', 'PostgreSQL', 'Claude AI'],
+    websiteUrl: 'https://gethomeloop.com',
+    storeUrl: 'https://play.google.com/store/apps/details?id=com.gethomeloop.app',
     status: 'live',
-    imageUrl: '/images/projects/react-travel.png',
+    imageUrl: '/images/projects/homeloop.png',
   },
   {
     id: 'myreelmind',
@@ -22,6 +22,17 @@ export const projects: Project[] = [
     liveUrl: undefined,
     status: 'live',
     imageUrl: '/images/projects/myreelmind.png',
+  },
+  {
+    id: 'react-travel',
+    title: 'React Travel App',
+    description:
+      'A travel discovery app built with React.js that integrates Google Places API to explore destinations, view place details, and find nearby attractions.',
+    techStack: ['React.js', 'Google Places API', 'JavaScript', 'CSS'],
+    githubUrl: 'https://github.com/jgarrone82/React-Project-Travel',
+    liveUrl: undefined,
+    status: 'live',
+    imageUrl: '/images/projects/react-travel.png',
   },
   {
     id: 'tienda-online',
@@ -46,21 +57,11 @@ export const projects: Project[] = [
     imageUrl: '/images/projects/nodejs-blog.png',
   },
   {
-    id: 'homeloop',
-    title: 'Homeloop',
-    description:
-      "A chore planner for couples: add the household's tasks, set a free-time block, and an AI builds both partners' day around it. Assign tasks, do them together, replan when life changes — same list on both phones.",
-    techStack: ['React Native', 'Expo', 'TypeScript', '.NET 10', 'PostgreSQL', 'Claude AI'],
-    websiteUrl: 'https://gethomeloop.com',
-    storeUrl: 'https://play.google.com/store/apps/details?id=com.gethomeloop.app',
-    status: 'live',
-    imageUrl: '/images/projects/homeloop.png',
-  },
-  {
     id: 'coming-soon-2',
     title: 'Coming Soon',
     description: 'A new project is in the works. Stay tuned for updates.',
     techStack: [],
     githubUrl: '',
     status: 'coming-soon',
-  },];
+  },
+];
