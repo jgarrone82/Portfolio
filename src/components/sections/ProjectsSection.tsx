@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Lock, Github, ExternalLink } from 'lucide-react';
+import { Lock, Github, ExternalLink, Globe, Play } from 'lucide-react';
 import { Badge } from '@/src/components/ui/Badge';
 import { Button } from '@/src/components/ui/Button';
 import { SectionTitle } from '@/src/components/ui/SectionTitle';
@@ -43,8 +43,32 @@ export function LiveProjectCard({ project }: { project: Project }) {
         )}
 
         {/* Action buttons */}
-        {(project.liveUrl || project.githubUrl) && (
+        {(project.liveUrl || project.websiteUrl || project.storeUrl || project.githubUrl) && (
           <div className="flex flex-wrap gap-2">
+            {project.websiteUrl && (
+              <Button
+                variant="primary"
+                size="sm"
+                href={project.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Globe className="size-4" />
+                Website
+              </Button>
+            )}
+            {project.storeUrl && (
+              <Button
+                variant="outline"
+                size="sm"
+                href={project.storeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Play className="size-4" />
+                Google Play
+              </Button>
+            )}
             {project.liveUrl && (
               <Button
                 variant="primary"

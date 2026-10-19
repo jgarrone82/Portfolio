@@ -28,6 +28,8 @@ export interface Project {
   techStack: string[];
   githubUrl?: string;
   liveUrl?: string;
+  websiteUrl?: string;
+  storeUrl?: string;
   status: 'live' | 'coming-soon';
   imageUrl?: string;
 }
